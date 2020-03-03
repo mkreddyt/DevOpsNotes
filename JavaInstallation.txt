@@ -1,0 +1,16 @@
+JAVA
+======
+> #yum install java-1.8*
+> To check java version use #java -version
+> To find path of java use #find /usr/lib/jvm/java-1.8* | head -n 3
+> Copy the path of java </usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64>
+> Open #vim .bash_profile to set environment variable.
+> Then paste that path into .bash_profile
+> #vim .bash_profile
+  JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64
+  and edit path like- PATH=$PATH:<JAVA_HOME>:$HOME/bin
+> To check the path of java- #echo $JAVA_HOME
+> To Update environment variable use #source ~/.bash_profile
+> Then check path #echo $JAVA_HOME
+> Then to check full path #echo $PATH
+
