@@ -1,0 +1,32 @@
+ JENKINS
+=========
+
+>STANDALONE INSTALLATION PROCESS
+================================
+> First add jenkins repository.
+> Download RedHat Linux RPM packages for Jenkins from jenkins website.
+ #wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+ #rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+> With that set up, the Jenkins package can be installed with:
+ #yum install jenkins -y
+> Run the following systemctl commands to start and enable the jenkins service
+ #systemctl start jenkins
+ #systemctl enable jenkins
+> In case firewall is enabled on your Linux server then run the following commands to open jenkins related ports like 80 and 8080.
+ #firewall-cmd --zone=public --add-port=8080/tcp --permanent	-success
+ #firewall-cmd --zone=public --add-service=http --permanent	-success
+ #firewall-cmd --reload
+> To Access the Jenkins Web portal follow steps like this.
+> To access the URL : http://<Ip-Address-of-your-Server>:8080
+> Then Admin password is created and stored in the log file  “/var/log/jenkins/jenkins.log“. Run the below command to get the password.
+ #grep -A 5 password /var/log/jenkins/jenkins.log
+> then install suggested plugins
+> After that it will ask to create admin user.
+
+>INSTALLATION BY USING APACHETOMCAT
+===================================
+> Download jenkins .war file into apache-tomcat/conf/webapps directory from the link: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+> Then open tomcat and start jenkins.
+> To unlock jenkins please copy the password from the location of < /root/.jenkins/secrets/initialAdminPassword > and paste it.
+> cat /root/.jenkins/secrets/initialAdminPassword
+> Then install plugins and create admin user. Add maven and GitHub plugins.
