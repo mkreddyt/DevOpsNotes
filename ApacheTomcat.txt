@@ -1,0 +1,33 @@
+ APACHE TOMCAT
+===============
+> Download apache-tomact tar.gz from the link: http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz
+#wget http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz
+> Then unzip it
+> #tar -xvzf apache-tomcat-8.5.51.tar.gz
+>Then change the directory to apache-tomcat-8.5.51
+> #cd apache-tomcat-8.5.51
+> To start/stop the apachetomcat go to bin directory. In bin directory to start service by using ./startup.sh . To stop use ./shutdown.sh .
+> first start the sevice to install by using process. To check the service is running or not #ps -ef | grep tomcat
+> #./startup.sh  Then copy ip address and browse it by adding 8080 port.
+> To change port numbers the locatin is /apache-tomcat-8.5.51/conf/server.xml
+> Then edit context.xml fille and add users to use.
+> To find the location of context.xml by using #find / -name "context.xml"
+> The location of context.xml file is
+  /opt/apache-tomcat-8.5.51/webapps/host-manager/META-INF/context.xml
+> In this make comment here <!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+                                    allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+> The location to add users is conf/tomcat-user.xml file in apache-tomcat
+> Users means - manager-gui - allows access to the HTML GUI and the status pages
+                manager-script - allows access to the text interface and the status pages
+                manager-jmx - allows access to the JMX proxy and the status pages
+                manager-status - allows access to the status pages only
+> Add users like this - <role rolename="manager-gui"/>
+                        <user username="tomcat" password="tomcat" roles="manager-gui"/>
+> Then login by using username and passwd.
+> Here we can create softlink to start/stop the service from any location of the machine.
+> Before that give executing permissions to startup.sh and shutdown.sh which are under bin.
+> Like this #chmod +x /opt/apache-tomcat-8.5.35/bin/startup.sh shutdown.sh
+> Create softlink files for tomcat startup.sh and shutdown.sh
+  ln -s /opt/apache-tomcat-8.5.51/bin/startup.sh /usr/bin/tomcatup
+  ln -s /opt/apache-tomcat-8.5.51/bin/shutdown.sh /usr/bin/tomcatdown
+
