@@ -1,0 +1,24 @@
+ MAVEN
+=======
+> Maven: Maven is a code build tool which used to convert your code to artifact. this is widely used plugin to build in continuous integration.
+> Download maven package from the link: https://maven.apache.org/download.cgi
+> Download it into a /opt/maven directory
+> #wget http://apachemirror.wuchna.com/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+> Then unzip it bu using cmd #tar -xvzf
+> #tar -zvxf <name> ex: <apache-maven-3.6.3-bin.tar.gz>
+> Then go to apache-maven-3.6.3 directory #cd apache-maven-3.6.3
+> Check present working directory #pwd
+> Copy this path to set environment variable < /opt/maven/apache-maven-3.6.3 >
+> Then goto root directory like cd /root. In this directory edit .bash_profile
+> #vim .bash_profile
+  M2_HOME=/opt/maven/apache-maven-3.6.3
+  M2=$M2_HOME/bin
+  PATH=$PATH:$JAVA_HOME:$M2_HOME:$M2:$HOME/bin  - Then save it.
+> To check the path of Maven- #echo $M2_HOME
+> To Update environment variable use #source ~/.bash_profile
+> Then check path #echo $M2_HOME
+> Then to check full path #echo $PATH
+> To check maven version use #mvn -version
+> Then download maven plugins in jenkins. Like Maven Invoke and Maven Integration.
+> Then go to global tool configuration in jenkins and then add maven path < /opt/maven/apache-maven-3.6.3  >
+
